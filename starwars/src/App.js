@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import './App.css';
-
+import React, { Component } from "react";
+import "./App.css";
+import Starwars from "./components/Starwars";
+import Pagination from "./components/Pagination";
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      next: null,
+      previous: null
     };
   }
 
   componentDidMount() {
-    this.getCharacters('https://swapi.co/api/people/');
+    this.getCharacters("https://swapi.co/api/people/");
   }
 
   getCharacters = URL => {
@@ -22,7 +25,12 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        console.log(data);
+        this.setState({
+          starwarsChars: data.results,
+          next: data.next,
+          previous: data.previous
+        });
       })
       .catch(err => {
         throw new Error(err);
@@ -30,9 +38,13 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+        <Pagination nextPage={this.state.next} prevPage={this.state.previous} />
+        <Starwars starwarsCast={this.state.starwarsChars} />
+        <Pagination nextPage={this.state.next} prevPage={this.state.previous} />
       </div>
     );
   }

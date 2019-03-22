@@ -1,0 +1,41 @@
+.pagination {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 0px;
+  border: 1px solid;
+  border-radius: 20px;
+  width: 200px;
+  max-width: 230px;
+  background: #b8beb9ab;
+}
+.pagination > button {
+  font-size: 1rem;
+  background: #c9d5e59e;
+}
+.prev-button {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+}
+.next-button {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+}
+.next {
+  display: flex;
+}
+.next > button {
+  font-size: 1rem;
+}
+
+.oneOf {
+  flex-grow: 1;
+  border-right: 1px solid;
+  border-left: 1px solid;
+  padding: 0 5px;
+}
+
+button:focus {
+  outline-style: none;
+}
